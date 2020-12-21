@@ -522,20 +522,19 @@ MenuItem* StdWorkbench::setupMenuBar() const
     // File
     MenuItem* file = new MenuItem( menuBar );
     file->setCommand("&File");
-    *file << "Std_New" << "Std_Open" << "Separator" << "Std_CloseActiveWindow"
+    *file << "Std_New" << "Std_Open" << "Std_RecentFiles" << "Separator" << "Std_CloseActiveWindow"
           << "Std_CloseAllWindows" << "Separator" << "Std_Save" << "Std_SaveAs"
-          << "Std_SaveCopy" << "Std_SaveAll" << "Std_Revert" << "Separator" << "Std_Import" 
-          << "Std_Export" << "Std_MergeProjects" << "Std_ProjectInfo" 
-          << "Separator" << "Std_Print" << "Std_PrintPreview" << "Std_PrintPdf"
-          << "Separator" << "Std_RecentFiles" << "Separator" << "Std_Quit";
+          << "Std_SaveAll" << "Std_Revert" << "Separator"
+          << "Std_Print" << "Std_PrintPreview"
+          << "Separator" << "Std_Quit";
 
     // Edit
     MenuItem* edit = new MenuItem( menuBar );
     edit->setCommand("&Edit");
     *edit << "Std_Undo" << "Std_Redo" << "Separator" << "Std_Cut" << "Std_Copy"
-          << "Std_Paste" << "Std_DuplicateSelection" << "Separator"
-          << "Std_Refresh" << "Std_BoxSelection" << "Std_BoxElementSelection" << "Std_SelectAll" << "Std_Delete"
-          << "Separator" << "Std_Placement" /*<< "Std_TransformManip"*/ << "Std_Alignment"
+          << "Std_Paste" << "Separator"
+          << "Std_BoxSelection" << "Std_SelectAll" << "Std_Delete"
+          << "Separator" << "Std_Placement" << "Std_Alignment"
           << "Std_Edit" << "Separator" << "Std_DlgPreferences";
 
     MenuItem* axoviews = new MenuItem;
@@ -626,10 +625,6 @@ MenuItem* StdWorkbench::setupMenuBar() const
     // Help
     MenuItem* help = new MenuItem( menuBar );
     help->setCommand("&Help");
-    *help << "Std_OnlineHelp" << "Std_FreeCADWebsite"
-          << "Std_FreeCADUserHub" << "Std_FreeCADPowerUserHub"
-          << "Std_PythonHelp" << "Std_FreeCADForum"
-          << "Std_FreeCADFAQ" << "Std_About" << "Std_WhatsThis";
 
     return menuBar;
 }
