@@ -1742,37 +1742,39 @@ void CreateDocCommands(void)
 
     rcCmdMgr.addCommand(new StdCmdNew());
     rcCmdMgr.addCommand(new StdCmdOpen());
-    rcCmdMgr.addCommand(new StdCmdImport());
+    // TODO: add Open Recent
+
+    /*rcCmdMgr.addCommand(new StdCmdImport());
     rcCmdMgr.addCommand(new StdCmdExport());
     rcCmdMgr.addCommand(new StdCmdMergeProjects());
-    rcCmdMgr.addCommand(new StdCmdExportGraphviz());
+    rcCmdMgr.addCommand(new StdCmdExportGraphviz());*/
 
     rcCmdMgr.addCommand(new StdCmdSave());
     rcCmdMgr.addCommand(new StdCmdSaveAs());
-    rcCmdMgr.addCommand(new StdCmdSaveCopy());
+    // rcCmdMgr.addCommand(new StdCmdSaveCopy());
     rcCmdMgr.addCommand(new StdCmdSaveAll());
-    rcCmdMgr.addCommand(new StdCmdRevert());
+    /*rcCmdMgr.addCommand(new StdCmdRevert());
     rcCmdMgr.addCommand(new StdCmdProjectInfo());
-    rcCmdMgr.addCommand(new StdCmdProjectUtil());
+    rcCmdMgr.addCommand(new StdCmdProjectUtil());*/
     rcCmdMgr.addCommand(new StdCmdUndo());
     rcCmdMgr.addCommand(new StdCmdRedo());
     rcCmdMgr.addCommand(new StdCmdPrint());
     rcCmdMgr.addCommand(new StdCmdPrintPreview());
-    rcCmdMgr.addCommand(new StdCmdPrintPdf());
+    //rcCmdMgr.addCommand(new StdCmdPrintPdf());
     rcCmdMgr.addCommand(new StdCmdQuit());
     rcCmdMgr.addCommand(new StdCmdCut());
     rcCmdMgr.addCommand(new StdCmdCopy());
     rcCmdMgr.addCommand(new StdCmdPaste());
-    rcCmdMgr.addCommand(new StdCmdDuplicateSelection());
+    //rcCmdMgr.addCommand(new StdCmdDuplicateSelection());
     rcCmdMgr.addCommand(new StdCmdSelectAll());
     rcCmdMgr.addCommand(new StdCmdDelete());
-    rcCmdMgr.addCommand(new StdCmdRefresh());
-    rcCmdMgr.addCommand(new StdCmdTransform());
-    rcCmdMgr.addCommand(new StdCmdPlacement());
-    rcCmdMgr.addCommand(new StdCmdTransformManip());
-    rcCmdMgr.addCommand(new StdCmdAlignment());
-    rcCmdMgr.addCommand(new StdCmdEdit());
-    rcCmdMgr.addCommand(new StdCmdExpression());
+    //rcCmdMgr.addCommand(new StdCmdRefresh());
+    //rcCmdMgr.addCommand(new StdCmdTransform());
+    //rcCmdMgr.addCommand(new StdCmdPlacement());
+    //rcCmdMgr.addCommand(new StdCmdTransformManip());
+    //rcCmdMgr.addCommand(new StdCmdAlignment());
+    //rcCmdMgr.addCommand(new StdCmdEdit());
+    //rcCmdMgr.addCommand(new StdCmdExpression());
 }
 
 } // namespace Gui
