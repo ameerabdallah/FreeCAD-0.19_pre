@@ -1,0 +1,5 @@
+/** \defgroup TEST Test
+ *  \ingroup CWORKBENCHES 
+ *  \brief Test framework of FreeCAD
+ */
+

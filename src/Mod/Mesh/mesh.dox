@@ -1,0 +1,5 @@
+/** \defgroup MESH Mesh
+ *  \ingroup CWORKBENCHES 
+ *  \brief Tools to work with polygon meshes
+ */
+

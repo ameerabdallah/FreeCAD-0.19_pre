@@ -1,0 +1,5 @@
+/** \defgroup FEM Fem
+ *  \ingroup PYTHONWORKBENCHES 
+ *  \brief Finite Elements Analysis workbench
+ */
+
