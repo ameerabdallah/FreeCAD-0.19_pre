@@ -101,6 +101,7 @@ StdCmdOpen::StdCmdOpen()
     eType         = NoTransaction;
 }
 
+//IF you click file and open this for file format
 void StdCmdOpen::activated(int iMsg)
 {
     Q_UNUSED(iMsg);
@@ -162,6 +163,47 @@ void StdCmdOpen::activated(int iMsg)
             getGuiApplication()->open(it.key().toUtf8(), it.value().toLatin1());
         }
     }
+}
+
+
+//===========================================================================
+// Std_Open_Recent
+//===========================================================================
+
+DEF_STD_CMD_C(StdCmdOpenRecent)
+
+StdCmdOpenRecent::StdCmdOpenRecent()
+    :Command("Std_OpenRecent")
+{
+    sGroup = QT_TR_NOOP("File");
+    sMenuText = QT_TR_NOOP("&Recent files");
+    sToolTipText = QT_TR_NOOP("Recent file list");
+    sWhatsThis = "Std_RecentFiles";
+    sStatusTip = QT_TR_NOOP("Recent file list");
+    eType = NoTransaction;
+}
+
+/**
+ * Opens the recent file at position \a iMsg in the menu.
+ * If the file does not exist or cannot be loaded this item is removed
+ * from the list.
+ */
+void StdCmdOpenRecent::activated(int iMsg)
+{
+    RecentFilesAction* act = qobject_cast<RecentFilesAction*>(_pcAction);
+    if (act) act->activateFile(iMsg);
+}
+
+/**
+ * Creates the QAction object containing the recent files.
+ */
+Action* StdCmdOpenRecent::createAction(void)
+{
+    RecentFilesAction* pcAction = new RecentFilesAction(this, getMainWindow());
+    pcAction->setObjectName(QLatin1String("recentFiles"));
+    pcAction->setDropDownMenu(true);
+    applyCommandData(this->className(), pcAction);
+    return pcAction;
 }
 
 //===========================================================================
@@ -527,6 +569,7 @@ bool StdCmdSaveAs::isActive(void)
 //===========================================================================
 // Std_SaveCopy
 //===========================================================================
+/* 
 DEF_STD_CMD_A(StdCmdSaveCopy)
 
 StdCmdSaveCopy::StdCmdSaveCopy()
@@ -552,10 +595,12 @@ void StdCmdSaveCopy::activated(int iMsg)
     doCommand(Command::Gui,"Gui.SendMsgToActiveView(\"SaveCopy\")");
 }
 
+
 bool StdCmdSaveCopy::isActive(void)
 {
   return ( getActiveGuiDocument() ? true : false );
 }
+ */
 
 //===========================================================================
 // Std_SaveAll
@@ -925,7 +970,7 @@ StdCmdCopy::StdCmdCopy()
   : Command("Std_Copy")
 {
     sGroup        = QT_TR_NOOP("Edit");
-    sMenuText     = QT_TR_NOOP("C&opy");
+    sMenuText     = QT_TR_NOOP("&Copy");
     sToolTipText  = QT_TR_NOOP("Copy operation");
     sWhatsThis    = "Std_Copy";
     sStatusTip    = QT_TR_NOOP("Copy operation");
@@ -1765,7 +1810,7 @@ void CreateDocCommands(void)
 
     rcCmdMgr.addCommand(new StdCmdSave());
     rcCmdMgr.addCommand(new StdCmdSaveAs());
-    rcCmdMgr.addCommand(new StdCmdSaveCopy());
+    //rcCmdMgr.addCommand(new StdCmdSaveCopy());
     rcCmdMgr.addCommand(new StdCmdSaveAll());
     rcCmdMgr.addCommand(new StdCmdRevert());
     rcCmdMgr.addCommand(new StdCmdProjectInfo());

@@ -532,10 +532,9 @@ MenuItem* StdWorkbench::setupMenuBar() const
     MenuItem* edit = new MenuItem( menuBar );
     edit->setCommand("&Edit");
     *edit << "Std_Undo" << "Std_Redo" << "Separator" << "Std_Cut" << "Std_Copy"
-          << "Std_Paste" << "Separator"
-          << "Std_BoxSelection" << "Std_SelectAll" << "Std_Delete"
-          << "Separator" << "Std_Placement" << "Std_Alignment"
-          << "Std_Edit" << "Separator" << "Std_DlgPreferences";
+          << "Std_Paste" << "Separator" << "Std_BoxSelection" << "Std_SelectAll"
+          << "Std_Delete" << "Separator" << "Sketcher_EditSketch" << "Sketcher_LeaveSketch"
+          << "Sketcher_LeaveSketchNoSave" << "Separator" << "Std_DlgPreferences";
 
     MenuItem* axoviews = new MenuItem;
     axoviews->setCommand("Axonometric");
