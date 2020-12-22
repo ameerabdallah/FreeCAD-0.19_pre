@@ -430,6 +430,7 @@ void StdCmdNew::activated(int iMsg)
     ParameterGrp::handle hViewGrp = App::GetApplication().GetParameterGroupByPath("User parameter:BaseApp/Preferences/View");
     if (hViewGrp->GetBool("ShowAxisCross"))
         doCommand(Command::Gui,"Gui.ActiveDocument.ActiveView.setAxisCross(True)");
+    doCommand(PythonCommand::Doc, "App.activeDocument().addObject('Sketcher::SketchObject','Sketch')");
 }
 
 //===========================================================================
@@ -1754,7 +1755,7 @@ void CreateDocCommands(void)
 
     rcCmdMgr.addCommand(new StdCmdSave());
     rcCmdMgr.addCommand(new StdCmdSaveAs());
-     rcCmdMgr.addCommand(new StdCmdSaveCopy());
+    rcCmdMgr.addCommand(new StdCmdSaveCopy());
     rcCmdMgr.addCommand(new StdCmdSaveAll());
     rcCmdMgr.addCommand(new StdCmdRevert());
     rcCmdMgr.addCommand(new StdCmdProjectInfo());
