@@ -282,22 +282,22 @@ bool CmdSketcherEditSketch::isActive(void)
     return Gui::Selection().countObjectsOfType(Sketcher::SketchObject::getClassTypeId()) == 1;
 }
 
-DEF_STD_CMD_A(CmdSketcherLeaveSketch)
+///LeaveSketch No save
+DEF_STD_CMD_A(CmdSketcherLeaveSketchNoSave)
 
-CmdSketcherLeaveSketch::CmdSketcherLeaveSketch()
-  : Command("Sketcher_LeaveSketch")
+CmdSketcherLeaveSketchNoSave::CmdSketcherLeaveSketchNoSave()
+  : Command("Sketcher_LeaveSketchNoSave")
 {
     sAppModule      = "Sketcher";
     sGroup          = QT_TR_NOOP("Sketcher");
-    sMenuText       = QT_TR_NOOP("Leave sketch");
-    sToolTipText    = QT_TR_NOOP("Close the editing of the sketch");
-    sWhatsThis      = "Sketcher_LeaveSketch";
+    sMenuText       = QT_TR_NOOP("Exit Sketch without saving");
+    sToolTipText    = QT_TR_NOOP("Close the editing of the sketch without saving");
+    sWhatsThis      = "Sketcher_LeaveSketchNoSave";
     sStatusTip      = sToolTipText;
-    sPixmap         = "Sketcher_LeaveSketch";
     eType           = 0;
 }
 
-void CmdSketcherLeaveSketch::activated(int iMsg)
+void CmdSketcherLeaveSketchNoSave::activated(int iMsg)
 {
     Q_UNUSED(iMsg);
     Gui::Document *doc = getActiveGuiDocument();
@@ -311,12 +311,13 @@ void CmdSketcherLeaveSketch::activated(int iMsg)
 
     openCommand("Sketch changed");
     doCommand(Gui,"Gui.activeDocument().resetEdit()");
-    doCommand(Doc,"App.ActiveDocument.recompute()");
+    doCommand(Doc, "App.ActiveDocument.recompute()");
+    doCommand(Gui, "App.activeDocument().removeObject(ActiveSketch.Label)");
     commitCommand();
 
 }
 
-bool CmdSketcherLeaveSketch::isActive(void)
+bool CmdSketcherLeaveSketchNoSave::isActive(void)
 {
     Gui::Document *doc = getActiveGuiDocument();
     if (doc) {
@@ -327,6 +328,54 @@ bool CmdSketcherLeaveSketch::isActive(void)
     }
     return false;
 }
+
+//Leave Sketch while saving
+DEF_STD_CMD_A(CmdSketcherLeaveSketch)
+CmdSketcherLeaveSketch::CmdSketcherLeaveSketch()
+    : Command("Sketcher_LeaveSketch")
+{
+    sAppModule = "Sketcher";
+    sGroup = QT_TR_NOOP("Sketcher");
+    sMenuText = QT_TR_NOOP("Exit and Save Sketch");
+    sToolTipText = QT_TR_NOOP("Close the editing of the sketch");
+    sWhatsThis = "Sketcher_LeaveSketch";
+    sStatusTip = sToolTipText;
+    sPixmap = "Sketcher_LeaveSketch";
+    eType = 0;
+}
+
+void CmdSketcherLeaveSketch::activated(int iMsg)
+{
+    Q_UNUSED(iMsg);
+    Gui::Document* doc = getActiveGuiDocument();
+
+    if (doc) {
+        // checks if a Sketch Viewprovider is in Edit and is in no special mode
+        SketcherGui::ViewProviderSketch* vp = dynamic_cast<SketcherGui::ViewProviderSketch*>(doc->getInEdit());
+        if (vp && vp->getSketchMode() != ViewProviderSketch::STATUS_NONE)
+            vp->purgeHandler();
+    }
+
+    openCommand("Sketch changed");
+    doCommand(Gui, "Gui.activeDocument().resetEdit()");
+    doCommand(Doc, "App.ActiveDocument.recompute()");
+    commitCommand();
+
+}
+
+bool CmdSketcherLeaveSketch::isActive(void)
+{
+    Gui::Document* doc = getActiveGuiDocument();
+    if (doc) {
+        // checks if a Sketch Viewprovider is in Edit and is in no special mode
+        SketcherGui::ViewProviderSketch* vp = dynamic_cast<SketcherGui::ViewProviderSketch*>(doc->getInEdit());
+        if (vp /*&& vp->getSketchMode() == ViewProviderSketch::STATUS_NONE*/)
+            return true;
+    }
+    return false;
+}
+
+
 
 DEF_STD_CMD_A(CmdSketcherReorientSketch)
 
@@ -871,6 +920,7 @@ void CreateSketcherCommands(void)
     rcCmdMgr.addCommand(new CmdSketcherNewSketch());
     rcCmdMgr.addCommand(new CmdSketcherEditSketch());
     rcCmdMgr.addCommand(new CmdSketcherLeaveSketch());
+    rcCmdMgr.addCommand(new CmdSketcherLeaveSketchNoSave());
     rcCmdMgr.addCommand(new CmdSketcherReorientSketch());
     rcCmdMgr.addCommand(new CmdSketcherMapSketch());
     rcCmdMgr.addCommand(new CmdSketcherViewSketch());

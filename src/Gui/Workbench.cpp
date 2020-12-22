@@ -522,21 +522,17 @@ MenuItem* StdWorkbench::setupMenuBar() const
     // File
     MenuItem* file = new MenuItem( menuBar );
     file->setCommand("&File");
-    *file << "Std_New" << "Std_Open" << "Separator" << "Std_CloseActiveWindow"
-          << "Std_CloseAllWindows" << "Separator" << "Std_Save" << "Std_SaveAs"
-          << "Std_SaveCopy" << "Std_SaveAll" << "Std_Revert" << "Separator" << "Std_Import" 
-          << "Std_Export" << "Std_MergeProjects" << "Std_ProjectInfo" 
-          << "Separator" << "Std_Print" << "Std_PrintPreview" << "Std_PrintPdf"
-          << "Separator" << "Std_RecentFiles" << "Separator" << "Std_Quit";
+    *file << "Std_New" << "Std_Open" << "Std_OpenRecent" << "Separator" << "Std_CloseActiveWindow"
+          << "Std_CloseAllWindows" << "Separator" << "Std_Save" << "Std_SaveAs" << "Std_SaveAll" 
+            << "Std_Revert" << "Separator" << "Std_Print" << "Std_PrintPreview" << "Std_PrintPdf" << "Separator" << "Std_Quit";
 
     // Edit
     MenuItem* edit = new MenuItem( menuBar );
     edit->setCommand("&Edit");
     *edit << "Std_Undo" << "Std_Redo" << "Separator" << "Std_Cut" << "Std_Copy"
-          << "Std_Paste" << "Std_DuplicateSelection" << "Separator"
-          << "Std_Refresh" << "Std_BoxSelection" << "Std_BoxElementSelection" << "Std_SelectAll" << "Std_Delete"
-          << "Separator" << "Std_Placement" /*<< "Std_TransformManip"*/ << "Std_Alignment"
-          << "Std_Edit" << "Separator" << "Std_DlgPreferences";
+          << "Std_Paste" << "Separator" << "Std_BoxSelection" << "Std_SelectAll"
+          << "Std_Delete" << "Separator" << "Sketcher_EditSketch" << "Sketcher_LeaveSketch"
+          << "Sketcher_LeaveSketchNoSave" << "Separator" << "Std_DlgPreferences";
 
     MenuItem* axoviews = new MenuItem;
     axoviews->setCommand("Axonometric");

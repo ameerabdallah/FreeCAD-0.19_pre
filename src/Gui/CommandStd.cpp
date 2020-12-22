@@ -132,45 +132,6 @@ Action * StdCmdWorkbench::createAction(void)
     return pcAction;
 }
 
-//===========================================================================
-// Std_RecentFiles
-//===========================================================================
-
-DEF_STD_CMD_C(StdCmdRecentFiles)
-
-StdCmdRecentFiles::StdCmdRecentFiles()
-  :Command("Std_RecentFiles")
-{
-    sGroup        = QT_TR_NOOP("File");
-    sMenuText     = QT_TR_NOOP("Recent files");
-    sToolTipText  = QT_TR_NOOP("Recent file list");
-    sWhatsThis    = "Std_RecentFiles";
-    sStatusTip    = QT_TR_NOOP("Recent file list");
-    eType         = NoTransaction;
-}
-
-/**
- * Opens the recent file at position \a iMsg in the menu.
- * If the file does not exist or cannot be loaded this item is removed
- * from the list.
- */
-void StdCmdRecentFiles::activated(int iMsg)
-{
-    RecentFilesAction* act = qobject_cast<RecentFilesAction*>(_pcAction);
-    if (act) act->activateFile( iMsg );
-}
-
-/**
- * Creates the QAction object containing the recent files.
- */
-Action * StdCmdRecentFiles::createAction(void)
-{
-    RecentFilesAction* pcAction = new RecentFilesAction(this, getMainWindow());
-    pcAction->setObjectName(QLatin1String("recentFiles"));
-    pcAction->setDropDownMenu(true);
-    applyCommandData(this->className(), pcAction);
-    return pcAction;
-}
 
 //===========================================================================
 // Std_About
@@ -730,7 +691,6 @@ void CreateStdCommands(void)
     rcCmdMgr.addCommand(new StdCmdDlgCustomize());
     rcCmdMgr.addCommand(new StdCmdCommandLine());
     rcCmdMgr.addCommand(new StdCmdWorkbench());
-    rcCmdMgr.addCommand(new StdCmdRecentFiles());
     rcCmdMgr.addCommand(new StdCmdWhatsThis());
     rcCmdMgr.addCommand(new StdCmdPythonHelp());
     rcCmdMgr.addCommand(new StdCmdOnlineHelp());
