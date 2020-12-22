@@ -101,6 +101,7 @@ StdCmdOpen::StdCmdOpen()
     eType         = NoTransaction;
 }
 
+//IF you click file and open this for file format
 void StdCmdOpen::activated(int iMsg)
 {
     Q_UNUSED(iMsg);
@@ -517,6 +518,7 @@ bool StdCmdSaveAs::isActive(void)
 //===========================================================================
 // Std_SaveCopy
 //===========================================================================
+/* 
 DEF_STD_CMD_A(StdCmdSaveCopy)
 
 StdCmdSaveCopy::StdCmdSaveCopy()
@@ -542,10 +544,12 @@ void StdCmdSaveCopy::activated(int iMsg)
     doCommand(Command::Gui,"Gui.SendMsgToActiveView(\"SaveCopy\")");
 }
 
+
 bool StdCmdSaveCopy::isActive(void)
 {
   return ( getActiveGuiDocument() ? true : false );
 }
+ */
 
 //===========================================================================
 // Std_SaveAll
@@ -1749,7 +1753,7 @@ void CreateDocCommands(void)
 
     rcCmdMgr.addCommand(new StdCmdSave());
     rcCmdMgr.addCommand(new StdCmdSaveAs());
-    rcCmdMgr.addCommand(new StdCmdSaveCopy());
+    //rcCmdMgr.addCommand(new StdCmdSaveCopy());
     rcCmdMgr.addCommand(new StdCmdSaveAll());
     rcCmdMgr.addCommand(new StdCmdRevert());
     rcCmdMgr.addCommand(new StdCmdProjectInfo());
