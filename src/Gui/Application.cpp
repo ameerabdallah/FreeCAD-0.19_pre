@@ -1780,6 +1780,7 @@ void Application::runApplication(void)
 
     // check if a single or multiple instances can run
     it = cfg.find("SingleInstance");
+
     if (it != cfg.end() && mainApp.isRunning()) {
         // send the file names to be opened to the server application so that this
         // opens them
@@ -2059,6 +2060,9 @@ void Application::runApplication(void)
         Base::Console().Log("Init: Showing main window\n");
         mw.loadWindowSettings();
     }
+
+    Command::doCommand(Command::Gui, "Gui.activateWorkbench('SketcherWorkbench')");
+    Application::Instance->commandManager().runCommandByName("Std_New");
 
     hGrp = App::GetApplication().GetParameterGroupByPath("User parameter:BaseApp/Preferences/MainWindow");
     QMdiArea* mdi = mw.findChild<QMdiArea*>();
