@@ -170,10 +170,10 @@ void StdCmdOpen::activated(int iMsg)
 // Std_Open_Recent
 //===========================================================================
 
-DEF_STD_CMD_C(StdCmdOpenRecent)
+DEF_STD_CMD_C(StdCmdRecentFiles)
 
-StdCmdOpenRecent::StdCmdOpenRecent()
-    :Command("Std_OpenRecent")
+StdCmdRecentFiles::StdCmdRecentFiles()
+    :Command("Std_RecentFiles")
 {
     sGroup = QT_TR_NOOP("File");
     sMenuText = QT_TR_NOOP("&Recent files");
@@ -188,7 +188,7 @@ StdCmdOpenRecent::StdCmdOpenRecent()
  * If the file does not exist or cannot be loaded this item is removed
  * from the list.
  */
-void StdCmdOpenRecent::activated(int iMsg)
+void StdCmdRecentFiles::activated(int iMsg)
 {
     RecentFilesAction* act = qobject_cast<RecentFilesAction*>(_pcAction);
     if (act) act->activateFile(iMsg);
@@ -197,7 +197,7 @@ void StdCmdOpenRecent::activated(int iMsg)
 /**
  * Creates the QAction object containing the recent files.
  */
-Action* StdCmdOpenRecent::createAction(void)
+Action* StdCmdRecentFiles::createAction(void)
 {
     RecentFilesAction* pcAction = new RecentFilesAction(this, getMainWindow());
     pcAction->setObjectName(QLatin1String("recentFiles"));
@@ -1801,7 +1801,7 @@ void CreateDocCommands(void)
 
     rcCmdMgr.addCommand(new StdCmdNew());
     rcCmdMgr.addCommand(new StdCmdOpen());
-    // TODO: add Open Recent
+    rcCmdMgr.addCommand(new StdCmdRecentFiles());
 
     rcCmdMgr.addCommand(new StdCmdImport());
     rcCmdMgr.addCommand(new StdCmdExport());
