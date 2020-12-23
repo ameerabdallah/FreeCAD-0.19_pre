@@ -167,8 +167,8 @@ int main( int argc, char ** argv )
 #endif // PY_MAJOR_VERSION
 
     // Name and Version of the Application
-    App::Application::Config()["ExeName"] = "FreeCAD";
-    App::Application::Config()["ExeVendor"] = "FreeCAD";
+    App::Application::Config()["ExeName"] = "Team Two";
+    App::Application::Config()["ExeVendor"] = "Team Two";
     App::Application::Config()["AppDataSkipVendor"] = "true";
     App::Application::Config()["MaintainerUrl"] = "http://www.freecadweb.org/wiki/Main_Page";
 
