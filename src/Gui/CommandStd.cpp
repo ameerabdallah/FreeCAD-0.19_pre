@@ -677,6 +677,63 @@ void StdCmdUnitsCalculator::activated(int iMsg)
     dlg->show();
 }
 
+//===========================================================================
+// Select (dummy)
+//===========================================================================
+
+DEF_STD_CMD(StdCmdSelect)
+
+StdCmdSelect::StdCmdSelect()
+: Command("Std_Select")
+{
+    sMenuText = QT_TR_NOOP("&Select");
+}
+
+void StdCmdSelect::activated(int iMsg)
+{
+    //Q_UNUSED(iMsg);
+    //Gui::Dialog::DlgUnitsCalculator* dlg = new Gui::Dialog::DlgUnitsCalculator(getMainWindow());
+    //dlg->show();
+}
+
+//===========================================================================
+// Options (dummy)
+//===========================================================================
+
+DEF_STD_CMD(StdCmdOptions)
+
+StdCmdOptions::StdCmdOptions()
+    :Command("Std_Options")
+{
+    sMenuText = QT_TR_NOOP("&Options");
+}
+
+void StdCmdOptions::activated(int iMsg)
+{
+    //Q_UNUSED(iMsg);
+    //Gui::Dialog::DlgUnitsCalculator* dlg = new Gui::Dialog::DlgUnitsCalculator(getMainWindow());
+    //dlg->show();
+}
+
+//===========================================================================
+// Invert_seletion
+//===========================================================================
+
+DEF_STD_CMD(StdCmdInvertSelection)
+
+StdCmdInvertSelection::StdCmdInvertSelection()
+    :Command("StdCmdInvertSelection")
+{
+    sMenuText = QT_TR_NOOP("&Invert Selection");
+}
+
+void StdCmdInvertSelection::activated(int iMsg)
+{
+    //Q_UNUSED(iMsg);
+    //Gui::Dialog::DlgUnitsCalculator* dlg = new Gui::Dialog::DlgUnitsCalculator(getMainWindow());
+    //dlg->show();
+}
+
 namespace Gui {
 
 void CreateStdCommands(void)
@@ -702,6 +759,10 @@ void CreateStdCommands(void)
     rcCmdMgr.addCommand(new StdCmdFreeCADFAQ());
     rcCmdMgr.addCommand(new StdCmdPythonWebsite());
     rcCmdMgr.addCommand(new StdCmdUnitsCalculator());
+    rcCmdMgr.addCommand(new StdCmdSelect());
+    rcCmdMgr.addCommand(new StdCmdOptions());
+    rcCmdMgr.addCommand(new StdCmdInvertSelection());
+
     //rcCmdMgr.addCommand(new StdCmdMeasurementSimple());
     //rcCmdMgr.addCommand(new StdCmdDownloadOnlineHelp());
     //rcCmdMgr.addCommand(new StdCmdDescription());
