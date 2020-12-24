@@ -283,7 +283,7 @@ NaviCube::~NaviCube() {
 }
 
 void NaviCube::drawNaviCube() {
-	m_NaviCubeImplementation->drawNaviCube();
+	//m_NaviCubeImplementation->drawNaviCube();
 }
 
 void NaviCube::createContextMenu(const std::vector<std::string>& cmd) {
