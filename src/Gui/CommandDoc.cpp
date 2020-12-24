@@ -463,14 +463,9 @@ StdCmdNew::StdCmdNew()
 void StdCmdNew::activated(int iMsg)
 {
     Q_UNUSED(iMsg);
-    
-    if (Application::Instance->activeDocument() != NULL)
-    {
-        doCommand(PythonCommand::Doc, "App.activeDocument().addObject('Sketcher::SketchObject','Sketch')");
-    }
-    else
-    {
 
+    if (Application::Instance->activeDocument() == NULL)
+    {
         QString cmd;
         cmd = QString::fromLatin1("App.newDocument(\"%1\")")
             .arg(qApp->translate("StdCmdNew", "Unnamed"));
@@ -480,8 +475,9 @@ void StdCmdNew::activated(int iMsg)
         ParameterGrp::handle hViewGrp = App::GetApplication().GetParameterGroupByPath("User parameter:BaseApp/Preferences/View");
         if (hViewGrp->GetBool("ShowAxisCross"))
             doCommand(Command::Gui, "Gui.ActiveDocument.ActiveView.setAxisCross(True)");
-        doCommand(PythonCommand::Doc, "App.activeDocument().addObject('Sketcher::SketchObject','Sketch')");
     }
+    doCommand(PythonCommand::Doc, "ActiveSketch = App.activeDocument().addObject('Sketcher::SketchObject','Sketch')");
+    doCommand(PythonCommand::Gui, "Gui.activeDocument().setEdit(ActiveSketch.Label)");
 }
 
 //===========================================================================
