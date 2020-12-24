@@ -1100,6 +1100,7 @@ void StdCmdDuplicateSelection::activated(int iMsg)
                 "To link to external objects, the document must be saved at least once.\n"
                 "Do you want to save the document now?"),
                 QMessageBox::Yes,QMessageBox::No);
+            //
             if(ret == QMessageBox::Yes) 
                 proceed = Application::Instance->getDocument(doc)->saveAs();
         }
