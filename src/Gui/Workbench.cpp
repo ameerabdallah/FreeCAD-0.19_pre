@@ -562,7 +562,7 @@ MenuItem* StdWorkbench::setupMenuBar() const
     MenuItem* zoom = new MenuItem;
     zoom->setCommand("&Zoom");
     *zoom << "Std_ViewZoomIn" << "Std_ViewZoomOut" << "Separator" << "Std_ViewBoxZoom";
-
+    //
     // Visibility
     MenuItem* visu = new MenuItem;
     visu->setCommand("Visibility");
