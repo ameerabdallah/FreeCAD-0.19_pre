@@ -604,7 +604,7 @@ void View3DInventorViewer::init()
     mask = QBitmap::fromData(QSize(PAN_WIDTH, PAN_HEIGHT), pan_mask_bitmap);
     panCursor = QCursor(cursor, mask, PAN_HOT_X, PAN_HOT_Y);
     naviCube = new NaviCube(this);
-    naviCubeEnabled = true;
+    naviCubeEnabled = false;
 }
 
 View3DInventorViewer::~View3DInventorViewer()
