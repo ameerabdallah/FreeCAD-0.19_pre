@@ -681,7 +681,7 @@ void StdCmdUnitsCalculator::activated(int iMsg)
 // Select (dummy)
 //===========================================================================
 
-DEF_STD_CMD(StdCmdSelect)
+DEF_STD_CMD_A(StdCmdSelect)
 
 StdCmdSelect::StdCmdSelect()
 : Command("Std_Select")
@@ -691,16 +691,21 @@ StdCmdSelect::StdCmdSelect()
 
 void StdCmdSelect::activated(int iMsg)
 {
-    //Q_UNUSED(iMsg);
+    Q_UNUSED(iMsg);
     //Gui::Dialog::DlgUnitsCalculator* dlg = new Gui::Dialog::DlgUnitsCalculator(getMainWindow());
     //dlg->show();
+}
+
+bool StdCmdSelect::isActive(void)
+{
+    return false;
 }
 
 //===========================================================================
 // Options (dummy)
 //===========================================================================
 
-DEF_STD_CMD(StdCmdOptions)
+DEF_STD_CMD_A(StdCmdOptions)
 
 StdCmdOptions::StdCmdOptions()
     :Command("Std_Options")
@@ -710,16 +715,21 @@ StdCmdOptions::StdCmdOptions()
 
 void StdCmdOptions::activated(int iMsg)
 {
-    //Q_UNUSED(iMsg);
+    Q_UNUSED(iMsg);
     //Gui::Dialog::DlgUnitsCalculator* dlg = new Gui::Dialog::DlgUnitsCalculator(getMainWindow());
     //dlg->show();
 }
+bool StdCmdOptions::isActive(void)
+{
+    return false;
+}
+
 
 //===========================================================================
 // Invert_seletion
 //===========================================================================
 
-DEF_STD_CMD(StdCmdInvertSelection)
+DEF_STD_CMD_A(StdCmdInvertSelection)
 
 StdCmdInvertSelection::StdCmdInvertSelection()
     :Command("StdCmdInvertSelection")
@@ -729,10 +739,27 @@ StdCmdInvertSelection::StdCmdInvertSelection()
 
 void StdCmdInvertSelection::activated(int iMsg)
 {
-    //Q_UNUSED(iMsg);
-    //Gui::Dialog::DlgUnitsCalculator* dlg = new Gui::Dialog::DlgUnitsCalculator(getMainWindow());
-    //dlg->show();
+    Q_UNUSED(iMsg);
+    /*SelectionSingleton& rSel = Selection();
+    App::Document* doc = App::GetApplication().getActiveDocument();
+
+
+    std::vector<App::DocumentObject*> objs = doc->getObjectsOfType(App::DocumentObject::getClassTypeId());
+    std::vector<SelectionSingleton::SelObj> selectedObjs = rSel.getSelection();
+    rSel.setSelection(doc->getName(), objs);
+
+    // deselect
+    rSel.rmvSelection(doc->getName(), 0,0, &selectedObjs);*/
+
+
 }
+
+bool StdCmdInvertSelection::isActive(void)
+{
+    return false;
+}
+
+//===========================================================================
 
 namespace Gui {
 
