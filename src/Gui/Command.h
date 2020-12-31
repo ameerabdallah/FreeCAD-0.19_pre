@@ -221,6 +221,7 @@ void CreateDocCommands(void);
 void CreateFeatCommands(void);
 void CreateMacroCommands(void);
 void CreateViewStdCommands(void);
+void CreateSimulationCommands(void); // grayed out Simulation
 void CreateWindowStdCommands(void);
 void CreateStructureCommands(void);
 void CreateTestCommands(void);

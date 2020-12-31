@@ -675,13 +675,14 @@ void Application::createStandardOperations()
     // register the application Standard commands from CommandStd.cpp
     Gui::CreateStdCommands();
     Gui::CreateDocCommands();
-    Gui::CreateFeatCommands();
+    //Gui::CreateFeatCommands();
     Gui::CreateMacroCommands();
     Gui::CreateViewStdCommands();
+    Gui::CreateSimulationCommands();
     Gui::CreateWindowStdCommands();
     Gui::CreateStructureCommands();
     Gui::CreateTestCommands();
-    Gui::CreateLinkCommands();
+    Gui::CreateLinkCommands(); 
 }
 
 void Application::slotNewDocument(const App::Document& Doc, bool isMainDoc)

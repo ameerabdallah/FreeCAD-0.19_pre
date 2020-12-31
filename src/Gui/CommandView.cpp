@@ -1310,7 +1310,7 @@ StdCmdViewRotateLeft::StdCmdViewRotateLeft()
   : Command("Std_ViewRotateLeft")
 {
     sGroup        = QT_TR_NOOP("Standard-View");
-    sMenuText     = QT_TR_NOOP("Rotate Left");
+    sMenuText     = QT_TR_NOOP("Rotate Left by 90°");
     sToolTipText  = QT_TR_NOOP("Rotate the view by 90\xc2\xb0 counter-clockwise");
     sWhatsThis    = "Std_ViewRotateLeft";
     sStatusTip    = QT_TR_NOOP("Rotate the view by 90\xc2\xb0 counter-clockwise");
@@ -1335,7 +1335,7 @@ StdCmdViewRotateRight::StdCmdViewRotateRight()
   : Command("Std_ViewRotateRight")
 {
     sGroup        = QT_TR_NOOP("Standard-View");
-    sMenuText     = QT_TR_NOOP("Rotate Right");
+    sMenuText     = QT_TR_NOOP("Rotate Right by 90°");
     sToolTipText  = QT_TR_NOOP("Rotate the view by 90\xc2\xb0 clockwise");
     sWhatsThis    = "Std_ViewRotateRight";
     sStatusTip    = QT_TR_NOOP("Rotate the view by 90\xc2\xb0 clockwise");
@@ -1886,6 +1886,7 @@ bool StdCmdViewCreate::isActive(void)
 {
     return (getActiveGuiDocument()!=NULL);
 }
+
 
 //===========================================================================
 // Std_ToggleNavigation
@@ -3433,9 +3434,190 @@ Action * StdCmdSelBoundingBox::createAction(void)
 }
 
 //===========================================================================
+// Std_Redraw
+//===========================================================================
+DEF_STD_CMD_A(StdCmdRedraw)
+
+StdCmdRedraw::StdCmdRedraw()
+    : Command("Std_Redraw")
+{
+    sGroup = QT_TR_NOOP("Standard-View");
+    sMenuText = QT_TR_NOOP("Redraw");
+    sToolTipText = QT_TR_NOOP("Grayed out Redraw");
+    sWhatsThis = "Std_Redraw";
+    sStatusTip = QT_TR_NOOP("Grayed out Redraw");
+    eType = Alter3DView;
+}
+
+void StdCmdRedraw::activated(int iMsg)
+{
+    Q_UNUSED(iMsg);
+}
+
+bool StdCmdRedraw::isActive(void)
+{
+    return false;
+}
+
+//===========================================================================
+// Std_Origins
+//===========================================================================
+DEF_STD_CMD_A(StdCmdOrigins)
+
+StdCmdOrigins::StdCmdOrigins()
+    : Command("Std_Origins")
+{
+    sGroup = QT_TR_NOOP("Standard-View");
+    sMenuText = QT_TR_NOOP("Origins");
+    sToolTipText = QT_TR_NOOP("Grayed out Origins");
+    sWhatsThis = "Std_Origins";
+    sStatusTip = QT_TR_NOOP("Grayed out Origins");
+    eType = Alter3DView;
+}
+
+void StdCmdOrigins::activated(int iMsg)
+{
+    Q_UNUSED(iMsg);
+}
+
+bool StdCmdOrigins::isActive(void)
+{
+    return false;
+}
+
+//===========================================================================
+// Std_Dimensions
+//===========================================================================
+DEF_STD_CMD_A(StdCmdDimensions)
+
+StdCmdDimensions::StdCmdDimensions()
+    : Command("Std_Dimensions")
+{
+    sGroup = QT_TR_NOOP("Standard-View");
+    sMenuText = QT_TR_NOOP("Dimensions");
+    sToolTipText = QT_TR_NOOP("Grayed out Dimensions");
+    sWhatsThis = "Std_Dimensions";
+    sStatusTip = QT_TR_NOOP("Grayed out Dimensions");
+    eType = Alter3DView;
+}
+
+void StdCmdDimensions::activated(int iMsg)
+{
+    Q_UNUSED(iMsg);
+}
+
+bool StdCmdDimensions::isActive(void)
+{
+    return false;
+}
+
+//===========================================================================
+// Std_Grid
+//===========================================================================
+DEF_STD_CMD_A(StdCmdGrid)
+
+StdCmdGrid::StdCmdGrid()
+    : Command("Std_Grid")
+{
+    sGroup = QT_TR_NOOP("Standard-View");
+    sMenuText = QT_TR_NOOP("Grid");
+    sToolTipText = QT_TR_NOOP("Grayed out Grid");
+    sWhatsThis = "Std_Dimensions";
+    sStatusTip = QT_TR_NOOP("Grayed out Grid");
+    eType = Alter3DView;
+}
+
+void StdCmdGrid::activated(int iMsg)
+{
+    Q_UNUSED(iMsg);
+}
+
+bool StdCmdGrid::isActive(void)
+{
+    return false;
+}
+
+//===========================================================================
+// Std_SketchRelations
+//===========================================================================
+DEF_STD_CMD_A(StdCmdSketchRelations)
+
+StdCmdSketchRelations::StdCmdSketchRelations()
+    : Command("Std_SketchRelations")
+{
+    sGroup = QT_TR_NOOP("Standard-View");
+    sMenuText = QT_TR_NOOP("Sketch Relations");
+    sToolTipText = QT_TR_NOOP("Grayed out Sketch Relations");
+    sWhatsThis = "Std_SketchRelations";
+    sStatusTip = QT_TR_NOOP("Grayed out SKetch Relations");
+    eType = Alter3DView;
+}
+
+void StdCmdSketchRelations::activated(int iMsg)
+{
+    Q_UNUSED(iMsg);
+}
+
+bool StdCmdSketchRelations::isActive(void)
+{
+    return false;
+}
+//===========================================================================
+// Std_FeatureManagerTree
+//===========================================================================
+DEF_STD_CMD_A(StdCmdFeatureManagerTree)
+
+StdCmdFeatureManagerTree::StdCmdFeatureManagerTree()
+    : Command("Std_FeatureManagerTree")
+{
+    sGroup = QT_TR_NOOP("Standard-View");
+    sMenuText = QT_TR_NOOP("FeatureManagerTree");
+    sToolTipText = QT_TR_NOOP("Grayed out FeatureManagerTree");
+    sWhatsThis = "Std_FeatureManagerTree";
+    sStatusTip = QT_TR_NOOP("Grayed out FeatureManagerTree");
+    eType = Alter3DView;
+}
+
+void StdCmdFeatureManagerTree::activated(int iMsg)
+{
+    Q_UNUSED(iMsg);
+}
+
+bool StdCmdFeatureManagerTree::isActive(void)
+{
+    return false;
+}
+
+//===========================================================================
+// Std_Toolbars
+//===========================================================================
+DEF_STD_CMD_A(StdCmdToolbars)
+
+StdCmdToolbars::StdCmdToolbars()
+    : Command("Std_Toolbars")
+{
+    sGroup = QT_TR_NOOP("Standard-View");
+    sMenuText = QT_TR_NOOP("Toolbars");
+    sToolTipText = QT_TR_NOOP("Grayed out Toolbars");
+    sWhatsThis = "Std_Toolbars";
+    sStatusTip = QT_TR_NOOP("Grayed out Toolbars");
+    eType = Alter3DView;
+}
+
+void StdCmdToolbars::activated(int iMsg)
+{
+    Q_UNUSED(iMsg);
+}
+
+bool StdCmdToolbars::isActive(void)
+{
+    return false;
+}
+
+
+//===========================================================================
 // Instantiation
 //===========================================================================
-
 
 namespace Gui {
 
@@ -3499,17 +3681,26 @@ void CreateViewStdCommands(void)
     rcCmdMgr.addCommand(new StdCmdTreeSelectAllInstances());
     rcCmdMgr.addCommand(new StdCmdMeasureDistance());
     rcCmdMgr.addCommand(new StdCmdSceneInspector());
-    rcCmdMgr.addCommand(new StdCmdTextureMapping());
+    rcCmdMgr.addCommand(new StdCmdTextureMapping()); 
     rcCmdMgr.addCommand(new StdCmdDemoMode());
     rcCmdMgr.addCommand(new StdCmdToggleNavigation());
     rcCmdMgr.addCommand(new StdCmdAxisCross());
     rcCmdMgr.addCommand(new CmdViewMeasureClearAll());
     rcCmdMgr.addCommand(new CmdViewMeasureToggleAll());
-    rcCmdMgr.addCommand(new StdCmdSelBoundingBox());
+    rcCmdMgr.addCommand(new StdCmdSelBoundingBox()); 
     rcCmdMgr.addCommand(new StdCmdSelBack());
-    rcCmdMgr.addCommand(new StdCmdSelForward());
+    rcCmdMgr.addCommand(new StdCmdSelForward());  
     rcCmdMgr.addCommand(new StdCmdTreeViewActions());
-
+    // Redraw
+    rcCmdMgr.addCommand(new StdCmdRedraw());
+    // Hide/Show
+    rcCmdMgr.addCommand(new StdCmdOrigins());
+    rcCmdMgr.addCommand(new StdCmdDimensions());
+    rcCmdMgr.addCommand(new StdCmdGrid());
+    rcCmdMgr.addCommand(new StdCmdSketchRelations());
+    // User Interface
+    rcCmdMgr.addCommand(new StdCmdFeatureManagerTree());
+    rcCmdMgr.addCommand(new StdCmdToolbars());
 
     auto hGrp = App::GetApplication().GetParameterGroupByPath("User parameter:BaseApp/Preferences/View");
     if(hGrp->GetASCII("GestureRollFwdCommand").empty())
