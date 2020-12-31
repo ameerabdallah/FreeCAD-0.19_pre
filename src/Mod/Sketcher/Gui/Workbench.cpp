@@ -73,9 +73,9 @@ Gui::MenuItem* Workbench::setupMenuBar() const
     geom->setCommand("Sketcher geometries");
     addSketcherWorkbenchGeometries( *geom );
 
-    Gui::MenuItem* cons = new Gui::MenuItem();
-    cons->setCommand("Sketcher constraints");
-    addSketcherWorkbenchConstraints(*cons);
+    // Gui::MenuItem* cons = new Gui::MenuItem(); 
+    // cons->setCommand("Sketcher constraints");
+    // addSketcherWorkbenchConstraints(*cons);
 
     Gui::MenuItem* consaccel = new Gui::MenuItem();
     consaccel->setCommand("Sketcher tools");
@@ -341,20 +341,15 @@ inline void SketcherAddWorkspaceSketchExtra(T& /*sketch*/){
 
 template <>
 inline void SketcherAddWorkspaceSketchExtra<Gui::MenuItem>(Gui::MenuItem& sketch){
-    sketch  << "Sketcher_ReorientSketch"
-            << "Sketcher_ValidateSketch"
-            << "Sketcher_MergeSketches"
-            << "Sketcher_MirrorSketch";
+    sketch << "Sketcher_ValidateSketch";
 }
 
 template <typename T>
 inline void Sketcher_addWorkbenchSketchActions(T& sketch){
-    sketch  << "Sketcher_NewSketch"
-            << "Sketcher_EditSketch"
-            << "Sketcher_LeaveSketch"
-            << "Sketcher_ViewSketch"
-            << "Sketcher_ViewSection"
-            << "Sketcher_MapSketch";
+    sketch << "Sketcher_NewSketch"
+        << "Sketcher_EditSketch"
+
+
     SketcherAddWorkspaceSketchExtra( sketch );
 }
 
