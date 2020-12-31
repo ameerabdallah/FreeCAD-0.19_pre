@@ -563,7 +563,7 @@ MenuItem* StdWorkbench::setupMenuBar() const
     MenuItem* zoom = new MenuItem;
     zoom->setCommand("&Zoom");
     *zoom << "Std_ViewZoomIn" << "Std_ViewZoomOut" << "Separator" << "Std_ViewBoxZoom";
-
+    //
     // Visibility
     MenuItem* visu = new MenuItem;
     visu->setCommand("Visibility");
@@ -619,11 +619,18 @@ MenuItem* StdWorkbench::setupMenuBar() const
     // Tools
     MenuItem* tool = new MenuItem( menuBar );
     tool->setCommand("&Tools");
-    *tool << "Std_DlgParameter" << "Separator"
+    *tool << "Std_Select" <<
+        "Std_BoxSelection" << "Std_SelectAll" << "StdCmdInvertSelection"<<"Separator" << "Std_ViewScreenShot" << "Separator"
+        << "Std_MeasureDistance" << "Separator" << "Std_Options" <<
+        "Std_DlgCustomize";
+        /*
+        * previous tools setup: 
+        "Std_DlgParameter" << "Separator"
           << "Std_ViewScreenShot" << "Std_SceneInspector"
           << "Std_ExportGraphviz" << "Std_ProjectUtil" << "Separator"
           << "Std_MeasureDistance" << "Separator" 
-          << "Std_DemoMode" << "Std_UnitsCalculator" << "Separator" << "Std_DlgCustomize";
+          << "Std_DemoMode" << "Std_UnitsCalculator" << "Separator" << "Std_DlgCustomize"; */
+
 #ifdef BUILD_ADDONMGR
     *tool << "Std_AddonMgr";
 #endif

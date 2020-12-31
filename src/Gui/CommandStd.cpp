@@ -677,6 +677,90 @@ void StdCmdUnitsCalculator::activated(int iMsg)
     dlg->show();
 }
 
+//===========================================================================
+// Select (dummy)
+//===========================================================================
+
+DEF_STD_CMD_A(StdCmdSelect)
+
+StdCmdSelect::StdCmdSelect()
+: Command("Std_Select")
+{
+    sMenuText = QT_TR_NOOP("&Select");
+}
+
+void StdCmdSelect::activated(int iMsg)
+{
+    Q_UNUSED(iMsg);
+    //Gui::Dialog::DlgUnitsCalculator* dlg = new Gui::Dialog::DlgUnitsCalculator(getMainWindow());
+    //dlg->show();
+}
+
+bool StdCmdSelect::isActive(void)
+{
+    return false;
+}
+
+//===========================================================================
+// Options (dummy)
+//===========================================================================
+
+DEF_STD_CMD_A(StdCmdOptions)
+
+StdCmdOptions::StdCmdOptions()
+    :Command("Std_Options")
+{
+    sMenuText = QT_TR_NOOP("&Options");
+}
+
+void StdCmdOptions::activated(int iMsg)
+{
+    Q_UNUSED(iMsg);
+    //Gui::Dialog::DlgUnitsCalculator* dlg = new Gui::Dialog::DlgUnitsCalculator(getMainWindow());
+    //dlg->show();
+}
+bool StdCmdOptions::isActive(void)
+{
+    return false;
+}
+
+
+//===========================================================================
+// Invert_seletion
+//===========================================================================
+
+DEF_STD_CMD_A(StdCmdInvertSelection)
+
+StdCmdInvertSelection::StdCmdInvertSelection()
+    :Command("StdCmdInvertSelection")
+{
+    sMenuText = QT_TR_NOOP("&Invert Selection");
+}
+
+void StdCmdInvertSelection::activated(int iMsg)
+{
+    Q_UNUSED(iMsg);
+    /*SelectionSingleton& rSel = Selection();
+    App::Document* doc = App::GetApplication().getActiveDocument();
+
+
+    std::vector<App::DocumentObject*> objs = doc->getObjectsOfType(App::DocumentObject::getClassTypeId());
+    std::vector<SelectionSingleton::SelObj> selectedObjs = rSel.getSelection();
+    rSel.setSelection(doc->getName(), objs);
+
+    // deselect
+    rSel.rmvSelection(doc->getName(), 0,0, &selectedObjs);*/
+
+
+}
+
+bool StdCmdInvertSelection::isActive(void)
+{
+    return false;
+}
+
+//===========================================================================
+
 namespace Gui {
 
 void CreateStdCommands(void)
@@ -702,6 +786,10 @@ void CreateStdCommands(void)
     rcCmdMgr.addCommand(new StdCmdFreeCADFAQ());
     rcCmdMgr.addCommand(new StdCmdPythonWebsite());
     rcCmdMgr.addCommand(new StdCmdUnitsCalculator());
+    rcCmdMgr.addCommand(new StdCmdSelect());
+    rcCmdMgr.addCommand(new StdCmdOptions());
+    rcCmdMgr.addCommand(new StdCmdInvertSelection());
+
     //rcCmdMgr.addCommand(new StdCmdMeasurementSimple());
     //rcCmdMgr.addCommand(new StdCmdDownloadOnlineHelp());
     //rcCmdMgr.addCommand(new StdCmdDescription());
