@@ -443,6 +443,7 @@ void Workbench::removeTaskWatcher(void)
     qApp->translate("Workbench", "&Macro");
     qApp->translate("Workbench", "&Windows");
     qApp->translate("Workbench", "&On-line help");
+    qApp->translate("Workbench", "&Simulation");
     qApp->translate("Workbench", "&Help");
     qApp->translate("Workbench", "File");
     qApp->translate("Workbench", "Macro");
@@ -545,8 +546,8 @@ MenuItem* StdWorkbench::setupMenuBar() const
     // Standard views
     MenuItem* stdviews = new MenuItem;
     stdviews->setCommand("Standard views");
-    *stdviews << "Std_ViewFitAll" << "Std_ViewFitSelection" << axoviews
-              << "Separator" << "Std_ViewFront" << "Std_ViewTop"
+    *stdviews << "Std_ViewFitAll" << "Std_ViewFitSelection"
+              << axoviews << "Separator" << "Std_ViewFront" << "Std_ViewTop"
               << "Std_ViewRight" << "Separator" << "Std_ViewRear"
               << "Std_ViewBottom" << "Std_ViewLeft"
               << "Separator" << "Std_ViewRotateLeft" << "Std_ViewRotateRight";
@@ -572,23 +573,48 @@ MenuItem* StdWorkbench::setupMenuBar() const
           << "Separator" << "Std_ToggleSelectability"
           << "Separator" << "View_Measure_Toggle_All" << "View_Measure_Clear_All";
 
-    // View
+    // Hide/Show
+    MenuItem* hide_show = new MenuItem;
+    hide_show->setCommand("&Hide/Show");
+    // commands in CommandView.cpp
+    *hide_show << "Std_Origins" << "Std_Dimensions" << "Std_Grid" << "Std_SketchRelations";
+
+    // User Interface
+    MenuItem* ui = new MenuItem;
+    ui->setCommand("&User Interface");
+    // commands in CommandView.cpp
+    *ui << "Std_FeatureManagerTree" << "Std_Toolbars" << "Std_ViewStatusBar";
+
+//    // View
+//    MenuItem* view = new MenuItem(menuBar);
+//    view->setCommand("&View");
+//    *view << "Std_ViewCreate" << "Std_OrthographicCamera" << "Std_PerspectiveCamera" << "Std_MainFullscreen" << "Separator"
+//        << stdviews << "Std_FreezeViews" << "Std_DrawStyle" << "Std_SelBoundingBox"
+//        << "Separator" << view3d << zoom
+//        << "Std_ViewDockUndockFullscreen" << "Std_AxisCross" << "Std_ToggleClipPlane"
+//        << "Std_TextureMapping"
+//#ifdef BUILD_VR
+//        << "Std_ViewVR"
+//#endif 
+//        << "Separator" << visu
+//        << "Std_ToggleVisibility" << "Std_ToggleNavigation"
+//        << "Std_SetAppearance" << "Std_RandomColor" << "Separator"
+//        << "Std_Workbench" << "Std_ToolBarMenu" << "Std_DockViewMenu" << "Separator"
+//        << "Std_TreeViewActions"
+//        << "Std_ViewStatusBar";
+
+    // View menu item
     MenuItem* view = new MenuItem( menuBar );
     view->setCommand("&View");
-    *view << "Std_ViewCreate" << "Std_OrthographicCamera" << "Std_PerspectiveCamera" << "Std_MainFullscreen" << "Separator"
-          << stdviews << "Std_FreezeViews" << "Std_DrawStyle" << "Std_SelBoundingBox"
-          << "Separator" << view3d << zoom
-          << "Std_ViewDockUndockFullscreen" << "Std_AxisCross" << "Std_ToggleClipPlane"
-          << "Std_TextureMapping" 
+    *view << "Std_Redraw" << "Separator"
+          << "Std_ViewFitAll" << "Std_ViewFitSelection" << "Std_ViewZoomIn" << "Std_ViewZoomOut" << "Std_ViewBoxZoom" << "Separator"
 #ifdef BUILD_VR
           << "Std_ViewVR"
-#endif 
-          << "Separator" << visu
-          << "Std_ToggleVisibility" << "Std_ToggleNavigation"
-          << "Std_SetAppearance" << "Std_RandomColor" << "Separator" 
-          << "Std_Workbench" << "Std_ToolBarMenu" << "Std_DockViewMenu" << "Separator" 
-          << "Std_TreeViewActions"
-          << "Std_ViewStatusBar";
+#endif   
+          // Rotate and Pan in CommandWindow.cpp
+          << "Separator" << "Std_Rotate" << "Std_Pan" << "Std_ViewRotateRight" << "Std_ViewRotateLeft"
+          << "Separator" << hide_show
+          << "Separator" << "Std_ToolBarMenu" << ui << "Std_MainFullscreen";
 
     // Tools
     MenuItem* tool = new MenuItem( menuBar );
@@ -620,6 +646,15 @@ MenuItem* StdWorkbench::setupMenuBar() const
     // Separator
     MenuItem* sep = new MenuItem( menuBar );
     sep->setCommand( "Separator" );
+
+    // Simulation
+    // commands in CommandSimulation.cpp
+    MenuItem* simulation = new MenuItem(menuBar);
+    simulation->setCommand("&Simulation");
+    *simulation << "Std_DefineMaterials" << "Std_DefineSection" << "Std_DefineBoundCon" << "Std_DefineLoads" << "Separator"
+        << "Std_RunAnalysis" << "Separator"
+        << "Std_SectionProp" << "Separator"
+        << "Std_PlotResults" << "Std_ListResults" << "Std_ResultTools";
 
     // Help
     MenuItem* help = new MenuItem( menuBar );

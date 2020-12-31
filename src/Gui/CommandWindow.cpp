@@ -403,6 +403,92 @@ bool StdCmdStatusBar::isActive()
 }
 
 //===========================================================================
+// Std_Rotate
+//===========================================================================
+DEF_STD_CMD_AC(StdCmdRotate)
+
+StdCmdRotate::StdCmdRotate()
+    : Command("Std_Rotate")
+{
+    sGroup = QT_TR_NOOP("View");
+    sMenuText = QT_TR_NOOP("Pan");
+    sToolTipText = QT_TR_NOOP("Rotate navigational style");
+    sWhatsThis = "Std_Rotate";
+    sStatusTip = QT_TR_NOOP("Rotate navigational style");
+    eType = 0;
+}
+
+Action* StdCmdRotate::createAction(void)
+{
+    Action* pcAction = Command::createAction();
+    pcAction->setCheckable(true);
+    pcAction->setChecked(false);
+
+    return pcAction;
+}
+
+void StdCmdRotate::activated(int iMsg)
+{
+    getMainWindow()->statusBar()->setVisible(iMsg != 0);
+}
+
+bool StdCmdRotate::isActive()
+{
+    static bool checked = false;
+    if (!checked) {
+        Action* act = this->getAction();
+        if (act) {
+            act->setChecked(getMainWindow()->statusBar()->isVisible());
+            checked = true;
+        }
+    }
+    return checked;
+}
+
+//===========================================================================
+// Std_Pan
+//===========================================================================
+DEF_STD_CMD_AC(StdCmdPan)
+
+StdCmdPan::StdCmdPan()
+    : Command("Std_Pan")
+{
+    sGroup = QT_TR_NOOP("View");
+    sMenuText = QT_TR_NOOP("Pan");
+    sToolTipText = QT_TR_NOOP("Rotate navigational style");
+    sWhatsThis = "Std_Pan";
+    sStatusTip = QT_TR_NOOP("Rotate navigational style");
+    eType = 0;
+}
+
+Action* StdCmdPan::createAction(void)
+{
+    Action* pcAction = Command::createAction();
+    pcAction->setCheckable(true);
+    pcAction->setChecked(false);
+
+    return pcAction;
+}
+
+void StdCmdPan::activated(int iMsg)
+{
+    getMainWindow()->statusBar()->setVisible(iMsg != 0);
+}
+
+bool StdCmdPan::isActive()
+{
+    static bool checked = false;
+    if (!checked) {
+        Action* act = this->getAction();
+        if (act) {
+            act->setChecked(getMainWindow()->statusBar()->isVisible());
+            checked = true;
+        }
+    }
+    return checked;
+}
+
+//===========================================================================
 // Std_WindowsMenu
 //===========================================================================
 
@@ -477,6 +563,9 @@ void CreateWindowStdCommands(void)
     rcCmdMgr.addCommand(new StdCmdWindowsMenu());
     rcCmdMgr.addCommand(new StdCmdStatusBar());
     rcCmdMgr.addCommand(new StdCmdUserInterface());
+    // navigational style Rotate and Pan
+    rcCmdMgr.addCommand(new StdCmdRotate());
+    rcCmdMgr.addCommand(new StdCmdPan());
 }
 
 } // namespace Gui

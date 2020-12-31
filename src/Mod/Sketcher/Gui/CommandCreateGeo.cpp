@@ -5516,7 +5516,7 @@ CmdSketcherCreatePoint::CmdSketcherCreatePoint()
     sAppModule      = "Sketcher";
     sGroup          = QT_TR_NOOP("Sketcher");
     sMenuText       = QT_TR_NOOP("Create point");
-    sToolTipText    = QT_TR_NOOP("Yo mama");
+    sToolTipText    = QT_TR_NOOP("Yo mama");    // Create a point in the sketch
     sWhatsThis      = "Sketcher_CreatePoint";
     sStatusTip      = sToolTipText;
     sPixmap         = "Sketcher_CreatePoint";
