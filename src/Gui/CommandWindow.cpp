@@ -410,8 +410,8 @@ DEF_STD_CMD_AC(StdCmdRotate)
 StdCmdRotate::StdCmdRotate()
     : Command("Std_Rotate")
 {
-    sGroup = QT_TR_NOOP("View");
-    sMenuText = QT_TR_NOOP("Pan");
+    sGroup = QT_TR_NOOP("&View");
+    sMenuText = QT_TR_NOOP("Rotate");
     sToolTipText = QT_TR_NOOP("Rotate navigational style");
     sWhatsThis = "Std_Rotate";
     sStatusTip = QT_TR_NOOP("Rotate navigational style");
@@ -453,11 +453,11 @@ DEF_STD_CMD_AC(StdCmdPan)
 StdCmdPan::StdCmdPan()
     : Command("Std_Pan")
 {
-    sGroup = QT_TR_NOOP("View");
+    sGroup = QT_TR_NOOP("&View");
     sMenuText = QT_TR_NOOP("Pan");
-    sToolTipText = QT_TR_NOOP("Rotate navigational style");
+    sToolTipText = QT_TR_NOOP("Pan navigational style");
     sWhatsThis = "Std_Pan";
-    sStatusTip = QT_TR_NOOP("Rotate navigational style");
+    sStatusTip = QT_TR_NOOP("Pan navigational style");
     eType = 0;
 }
 

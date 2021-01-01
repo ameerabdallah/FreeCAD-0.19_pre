@@ -91,7 +91,6 @@ Gui::MenuItem* Workbench::setupMenuBar() const
 
     addSketcherWorkbenchSketchActions( *sketch );
     *sketch << geom
-            << cons
             << consaccel
             << bsplines
             << virtualspace;

@@ -290,7 +290,7 @@ CmdSketcherLeaveSketchNoSave::CmdSketcherLeaveSketchNoSave()
 {
     sAppModule      = "Sketcher";
     sGroup          = QT_TR_NOOP("Sketcher");
-    sMenuText       = QT_TR_NOOP("Exit Sketch without saving");
+    sMenuText       = QT_TR_NOOP("Exit Sketch without Saving Changes");
     sToolTipText    = QT_TR_NOOP("Close the editing of the sketch without saving");
     sWhatsThis      = "Sketcher_LeaveSketchNoSave";
     sStatusTip      = sToolTipText;

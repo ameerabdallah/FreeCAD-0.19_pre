@@ -1705,7 +1705,7 @@ StdViewScreenShot::StdViewScreenShot()
   : Command("Std_ViewScreenShot")
 {
     sGroup      = QT_TR_NOOP("Standard-View");
-    sMenuText   = QT_TR_NOOP("Save picture...");
+    sMenuText   = QT_TR_NOOP("Save picture");
     sToolTipText= QT_TR_NOOP("Creates a screenshot of the active view");
     sWhatsThis  = "Std_ViewScreenShot";
     sStatusTip  = QT_TR_NOOP("Creates a screenshot of the active view");
@@ -2851,7 +2851,7 @@ StdCmdMeasureDistance::StdCmdMeasureDistance()
   : Command("Std_MeasureDistance")
 {
     sGroup        = QT_TR_NOOP("View");
-    sMenuText     = QT_TR_NOOP("Measure distance");
+    sMenuText     = QT_TR_NOOP("Measure...");
     sToolTipText  = QT_TR_NOOP("Measure distance");
     sWhatsThis    = "Std_MeasureDistance";
     sStatusTip    = QT_TR_NOOP("Measure distance");

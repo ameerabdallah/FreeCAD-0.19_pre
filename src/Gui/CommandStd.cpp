@@ -710,7 +710,8 @@ DEF_STD_CMD_A(StdCmdOptions)
 StdCmdOptions::StdCmdOptions()
     :Command("Std_Options")
 {
-    sMenuText = QT_TR_NOOP("&Options");
+    sGroup = QT_TR_NOOP("&Tools");
+    sMenuText = QT_TR_NOOP("Options...");
 }
 
 void StdCmdOptions::activated(int iMsg)

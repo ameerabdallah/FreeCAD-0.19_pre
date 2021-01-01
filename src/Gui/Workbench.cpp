@@ -525,7 +525,7 @@ MenuItem* StdWorkbench::setupMenuBar() const
     file->setCommand("&File");
     *file << "Std_New" << "Std_Open" << "Std_RecentFiles" << "Separator" << "Std_CloseActiveWindow"
           << "Std_CloseAllWindows" << "Separator" << "Std_Save" << "Std_SaveAs"
-          << "Std_SaveAll" << "Std_Revert" << "Separator"
+          << "Std_SaveAll" << "Separator"
           << "Std_Print" << "Std_PrintPreview"
           << "Separator" << "Std_Quit";
 
