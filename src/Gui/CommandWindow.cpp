@@ -39,6 +39,9 @@
 #include <Base/Exception.h>
 #include <App/Document.h>
 
+#include "NavigationStyle.h"
+#include "View3DInventor.h"
+
 using namespace Gui;
 
 
@@ -429,7 +432,7 @@ Action* StdCmdRotate::createAction(void)
 
 void StdCmdRotate::activated(int iMsg)
 {
-    getMainWindow()->statusBar()->setVisible(iMsg != 0);
+    //getMainWindow()->statusBar()->setVisible(iMsg != 0);
 }
 
 bool StdCmdRotate::isActive()
@@ -438,7 +441,7 @@ bool StdCmdRotate::isActive()
     if (!checked) {
         Action* act = this->getAction();
         if (act) {
-            act->setChecked(getMainWindow()->statusBar()->isVisible());
+            //act->setChecked(getMainWindow()->statusBar()->isVisible());
             checked = true;
         }
     }
@@ -472,7 +475,11 @@ Action* StdCmdPan::createAction(void)
 
 void StdCmdPan::activated(int iMsg)
 {
-    getMainWindow()->statusBar()->setVisible(iMsg != 0);
+    //getMainWindow()->statusBar()->setVisible(iMsg != 0);
+
+    //Gui::NavigationStyle *ns = new Gui::NavigationStyle();
+    //ns->setViewingMode(Gui::NavigationStyle::PANNING);
+    //Gui::NavigationStyle::setViewingMode(Gui::NavigationStyle::PANNING);
 }
 
 bool StdCmdPan::isActive()
@@ -481,7 +488,7 @@ bool StdCmdPan::isActive()
     if (!checked) {
         Action* act = this->getAction();
         if (act) {
-            act->setChecked(getMainWindow()->statusBar()->isVisible());
+            //act->setChecked(getMainWindow()->statusBar()->isVisible());
             checked = true;
         }
     }

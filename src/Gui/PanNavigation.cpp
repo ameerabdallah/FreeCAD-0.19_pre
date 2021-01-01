@@ -1,26 +1,3 @@
-/***************************************************************************
- *   Copyright (c) 2011 Werner Mayer <wmayer[at]users.sourceforge.net>     *
- *                                                                         *
- *   This file is part of the FreeCAD CAx development system.              *
- *                                                                         *
- *   This library is free software; you can redistribute it and/or         *
- *   modify it under the terms of the GNU Library General Public           *
- *   License as published by the Free Software Foundation; either          *
- *   version 2 of the License, or (at your option) any later version.      *
- *                                                                         *
- *   This library  is distributed in the hope that it will be useful,      *
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
- *   GNU Library General Public License for more details.                  *
- *                                                                         *
- *   You should have received a copy of the GNU Library General Public     *
- *   License along with this library; see the file COPYING.LIB. If not,    *
- *   write to the Free Software Foundation, Inc., 59 Temple Place,         *
- *   Suite 330, Boston, MA  02111-1307, USA                                *
- *                                                                         *
- ***************************************************************************/
-
-
 #include "PreCompiled.h"
 #ifndef _PreComp_
 # include <cfloat>
@@ -49,19 +26,19 @@ using namespace Gui;
 
 // ----------------------------------------------------------------------------------
 
-/* TRANSLATOR Gui::BlenderNavigationStyle */
+/* TRANSLATOR Gui::PanNavigationStyle */
 
-TYPESYSTEM_SOURCE(Gui::BlenderNavigationStyle, Gui::UserNavigationStyle)
+TYPESYSTEM_SOURCE(Gui::PanNavigationStyle, Gui::UserNavigationStyle)
 
-BlenderNavigationStyle::BlenderNavigationStyle() : lockButton1(false)
+PanNavigationStyle::PanNavigationStyle() : lockButton1(false)
 {
 }
 
-BlenderNavigationStyle::~BlenderNavigationStyle()
+PanNavigationStyle::~PanNavigationStyle()
 {
 }
 
-const char* BlenderNavigationStyle::mouseButtons(ViewerMode mode)
+const char* PanNavigationStyle::mouseButtons(ViewerMode mode)
 {
     switch (mode) {
     case NavigationStyle::SELECTION:
@@ -77,7 +54,7 @@ const char* BlenderNavigationStyle::mouseButtons(ViewerMode mode)
     }
 }
 
-SbBool BlenderNavigationStyle::processSoEvent(const SoEvent* const ev)
+SbBool PanNavigationStyle::processSoEvent(const SoEvent* const ev)
 {
     // Events when in "ready-to-seek" mode are ignored, except those
     // which influence the seek mode itself -- these are handled further
@@ -107,60 +84,6 @@ SbBool BlenderNavigationStyle::processSoEvent(const SoEvent* const ev)
     const ViewerMode curmode = this->currentmode;
     ViewerMode newmode = curmode;
 
-    // Mismatches in state of the modifier keys happens if the user
-    // presses or releases them outside the viewer window.
-    if (this->ctrldown != ev->wasCtrlDown()) {
-        this->ctrldown = ev->wasCtrlDown();
-    }
-    if (this->shiftdown != ev->wasShiftDown()) {
-        this->shiftdown = ev->wasShiftDown();
-    }
-    if (this->altdown != ev->wasAltDown()) {
-        this->altdown = ev->wasAltDown();
-    }
-
-    // give the nodes in the foreground root the chance to handle events (e.g color bar)
-    if (!viewer->isEditing()) {
-        processed = handleEventInForeground(ev);
-        if (processed)
-            return true;
-    }
-
-    // Keyboard handling
-    if (type.isDerivedFrom(SoKeyboardEvent::getClassTypeId())) {
-        const SoKeyboardEvent* const event = (const SoKeyboardEvent*)ev;
-        const SbBool press = event->getState() == SoButtonEvent::DOWN ? true : false;
-        switch (event->getKey()) {
-        case SoKeyboardEvent::LEFT_CONTROL:
-        case SoKeyboardEvent::RIGHT_CONTROL:
-            this->ctrldown = press;
-            break;
-        case SoKeyboardEvent::LEFT_SHIFT:
-        case SoKeyboardEvent::RIGHT_SHIFT:
-            this->shiftdown = press;
-            break;
-        case SoKeyboardEvent::LEFT_ALT:
-        case SoKeyboardEvent::RIGHT_ALT:
-            this->altdown = press;
-            break;
-        case SoKeyboardEvent::H:
-            processed = true;
-            viewer->saveHomePosition();
-            break;
-        case SoKeyboardEvent::S:
-        case SoKeyboardEvent::HOME:
-        case SoKeyboardEvent::LEFT_ARROW:
-        case SoKeyboardEvent::UP_ARROW:
-        case SoKeyboardEvent::RIGHT_ARROW:
-        case SoKeyboardEvent::DOWN_ARROW:
-            if (!this->isViewing())
-                this->setViewing(true);
-            break;
-        default:
-            break;
-        }
-    }
-
     // Mouse Button / Spaceball Button handling
     if (type.isDerivedFrom(SoMouseButtonEvent::getClassTypeId())) {
         const SoMouseButtonEvent* const event = (const SoMouseButtonEvent*)ev;
@@ -173,17 +96,14 @@ SbBool BlenderNavigationStyle::processSoEvent(const SoEvent* const ev)
             this->lockrecenter = true;
             this->button1down = press;
             if (press && (this->currentmode == NavigationStyle::SEEK_WAIT_MODE)) {
-                newmode = NavigationStyle::SEEK_MODE;
+                newmode = NavigationStyle::PANNING;
                 this->seekToPoint(pos); // implicitly calls interactiveCountInc()
                 processed = true;
             }
-            //else if (press && (this->currentmode == NavigationStyle::IDLE)) {
-            //    this->setViewing(true);
-            //    processed = true;
-            //}
+
             else if (press && (this->currentmode == NavigationStyle::PANNING ||
                 this->currentmode == NavigationStyle::ZOOMING)) {
-                newmode = NavigationStyle::DRAGGING;
+                newmode = NavigationStyle::PANNING;
                 saveCursorPosition(ev);
                 this->centerTime = ev->getTime();
                 processed = true;
@@ -229,7 +149,7 @@ SbBool BlenderNavigationStyle::processSoEvent(const SoEvent* const ev)
                     this->currentmode != NavigationStyle::DRAGGING) {
                     if (this->isPopupMenuEnabled()) {
                         if (!press) { // release right mouse button
-                            this->openPopupMenu(event->getPosition());
+                            //this->openPopupMenu(event->getPosition());
                         }
                     }
                 }
@@ -335,39 +255,15 @@ SbBool BlenderNavigationStyle::processSoEvent(const SoEvent* const ev)
             processed = true;
         }
 
-        //if (curmode == NavigationStyle::DRAGGING) {
-        //    if (doSpin())
-        //        newmode = NavigationStyle::SPINNING;
-        //}
         break;
     case BUTTON1DOWN:
-    case CTRLDOWN | BUTTON1DOWN:
-        // make sure not to change the selection when stopping spinning
-        if (curmode == NavigationStyle::SPINNING || this->lockButton1)
-            newmode = NavigationStyle::IDLE;
-        else
-            newmode = NavigationStyle::SELECTION;
-        break;
-    case BUTTON1DOWN | BUTTON2DOWN:
-        newmode = NavigationStyle::PANNING;
-        break;
-    case SHIFTDOWN | BUTTON3DOWN:
-        newmode = NavigationStyle::PANNING;
-        break;
+    case BUTTON2DOWN:
     case BUTTON3DOWN:
-        if (newmode != NavigationStyle::DRAGGING) {
-            saveCursorPosition(ev);
-        }
-        newmode = NavigationStyle::DRAGGING;
+    case BUTTON1DOWN | BUTTON2DOWN:
+    case BUTTON1DOWN | BUTTON3DOWN:
+    case BUTTON2DOWN | BUTTON3DOWN:
+        newmode = NavigationStyle::PANNING;
         break;
-        //case BUTTON1DOWN|BUTTON2DOWN|BUTTON3DOWN:
-        //    newmode = NavigationStyle::ZOOMING;
-        //    break;
-    case CTRLDOWN | SHIFTDOWN | BUTTON2DOWN:
-    case CTRLDOWN | BUTTON3DOWN:
-        newmode = NavigationStyle::ZOOMING;
-        break;
-
     default:
         break;
     }
@@ -375,12 +271,6 @@ SbBool BlenderNavigationStyle::processSoEvent(const SoEvent* const ev)
     if (newmode != curmode) {
         this->setViewingMode(newmode);
     }
-
-    // If for dragging the buttons 1 and 3 are pressed
-    // but then button 3 is released we shouldn't switch
-    // into selection mode.
-    if (this->button1down && this->button3down)
-        this->lockButton1 = true;
 
     // If not handled in this class, pass on upwards in the inheritance
     // hierarchy.

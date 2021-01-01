@@ -490,14 +490,14 @@ void StdWorkbench::setupContextMenu(const char* recipient, MenuItem* item) const
         measure->setCommand("Measure");
         *measure << "View_Measure_Toggle_All" << "View_Measure_Clear_All";
 
-        *item << "Std_ViewFitAll" << "Std_ViewFitSelection" << "Std_DrawStyle" << StdViews << measure
-              << "Separator" << "Std_ViewDockUndockFullscreen";
+        //*item << "Std_ViewFitAll" << "Std_ViewFitSelection" << "Std_DrawStyle" << StdViews << measure
+        //      << "Separator" << "Std_ViewDockUndockFullscreen";
 
-        if (Gui::Selection().countObjectsOfType(App::DocumentObject::getClassTypeId()) > 0) {
-            *item << "Separator" << "Std_SetAppearance" << "Std_ToggleVisibility"
-                  << "Std_ToggleSelectability" << "Std_TreeSelection" 
-                  << "Std_RandomColor" << "Separator" << "Std_Delete";
-        }
+        //if (Gui::Selection().countObjectsOfType(App::DocumentObject::getClassTypeId()) > 0) {
+        //    *item << "Separator" << "Std_SetAppearance" << "Std_ToggleVisibility"
+        //          << "Std_ToggleSelectability" << "Std_TreeSelection" 
+        //          << "Std_RandomColor" << "Separator" << "Std_Delete";
+        //}
     }
     else if (strcmp(recipient,"Tree") == 0)
     {
