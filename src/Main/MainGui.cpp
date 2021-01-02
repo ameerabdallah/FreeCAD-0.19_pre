@@ -166,7 +166,7 @@ int main( int argc, char ** argv )
 #endif
 #endif // PY_MAJOR_VERSION
 
-    // Name and Version of the Application
+    // Name and Version of the Application, also the splashscreen name is here 
     App::Application::Config()["ExeName"] = "Team Two";
     App::Application::Config()["ExeVendor"] = "Team Two";
     App::Application::Config()["AppDataSkipVendor"] = "true";
