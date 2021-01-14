@@ -346,7 +346,7 @@ inline void SketcherAddWorkspaceSketchExtra<Gui::MenuItem>(Gui::MenuItem& sketch
 template <typename T>
 inline void Sketcher_addWorkbenchSketchActions(T& sketch){
     sketch << "Sketcher_NewSketch"
-        << "Sketcher_EditSketch"
+        << "Sketcher_EditSketch";
 
 
     SketcherAddWorkspaceSketchExtra( sketch );

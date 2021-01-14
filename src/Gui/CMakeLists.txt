@@ -492,6 +492,7 @@ SET(Command_CPP_SRCS
     CommandTest.cpp
     CommandView.cpp
     CommandStructure.cpp
+    CommandSimulation.cpp
     CommandLink.cpp
 )
 SET(Command_SRCS
