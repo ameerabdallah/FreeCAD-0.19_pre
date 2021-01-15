@@ -1577,6 +1577,7 @@ void my_se_translator_filter(unsigned int code, EXCEPTION_POINTERS* pExp)
 
 void Application::init(int argc, char ** argv)
 {
+    cout << "Running Program" << endl;
     try {
         // install our own new handler
 #ifdef _MSC_VER // Microsoft compiler
@@ -1612,6 +1613,7 @@ void Application::init(int argc, char ** argv)
         destructObserver();
         throw;
     }
+    cout << "Ending Program" << endl;
 }
 
 void Application::initTypes(void)
@@ -2150,6 +2152,7 @@ void Application::processCmdLineFiles(void)
 
 void Application::runApplication()
 {
+    cout << "Running Program" << endl;
     // process all files given through command line interface
     processCmdLineFiles();
 
@@ -2169,6 +2172,7 @@ void Application::runApplication()
     else {
         Console().Log("Unknown Run mode (%d) in main()?!?\n\n",mConfig["RunMode"].c_str());
     }
+    cout << "Ending Program" << endl;
 }
 
 void Application::logStatus()

@@ -1,0 +1,10 @@
+C:\Users\mcbea\OneDrive\Desktop\FreeCad_Builds\FreeCAD-0.19_pre\src\CSharp\FreeCadCSharp\obj\Release\FreeCadCSharp.csprojAssemblyReference.cache
+C:\Users\mcbea\OneDrive\Desktop\FreeCad_Builds\FreeCAD-0.19_pre\src\CSharp\FreeCadCSharp\obj\Release\FreeCadCSharp.csproj.CoreCompileInputs.cache
+C:\Users\mcbea\OneDrive\Desktop\FreeCad_Builds\FreeCAD-0.19_pre\src\CSharp\FreeCadCSharp\bin\Release\FreeCadCSharp.dll
+C:\Users\mcbea\OneDrive\Desktop\FreeCad_Builds\FreeCAD-0.19_pre\src\CSharp\FreeCadCSharp\bin\Release\FreeCadCSharp.pdb
+C:\Users\mcbea\OneDrive\Desktop\FreeCad_Builds\FreeCAD-0.19_pre\src\CSharp\FreeCadCSharp\obj\Release\FreeCadCSharp.pdb
+C:\Users\mcbea\OneDrive\Desktop\FreeCad_Builds\FreeCAD-0.19_pre\src\CSharp\FreeCadCSharp\$(SolutionDir)Build\$(Platform)\$(Configuration)\FreeCadCSharp.dll
+C:\Users\mcbea\OneDrive\Desktop\FreeCad_Builds\FreeCAD-0.19_pre\src\CSharp\FreeCadCSharp\$(SolutionDir)Build\$(Platform)\$(Configuration)\FreeCadCSharp.pdb
+C:\Users\mcbea\OneDrive\Desktop\FreeCad_Builds\Build_2021_1_1\bin\FreeCadCSharp.exe
+C:\Users\mcbea\OneDrive\Desktop\FreeCad_Builds\Build_2021_1_1\bin\FreeCadCSharp.pdb
+C:\Users\mcbea\OneDrive\Desktop\FreeCad_Builds\FreeCAD-0.19_pre\src\CSharp\FreeCadCSharp\obj\Release\FreeCadCSharp.exe

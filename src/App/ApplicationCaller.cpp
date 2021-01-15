@@ -2,15 +2,20 @@
 
 //Gets Application
 //Import into Namespace App
-App::Application& GetApplication()
+App::Application& GetApplication() //reference 
 {
 	return App::GetApplication();
+}
+
+void CloseAllDocuments()
+{
+	 App::GetApplication().closeAllDocuments();
 }
 
 //Init Applicaiton
 //Import into Class App::Application
 //Static
- void init(int argc, char** argv) {
+ void Init(int argc, char** argv) {
 	App::Application::init(argc, argv);
 }
 
@@ -22,8 +27,9 @@ App::Application& GetApplication()
  std::map<std::string, std::string>&Config() {
 	return App::Application::Config();
 }
+ //Init Application
 
 //Run Application - Static
-void runApplication() {
+void RunApplication() {
 	App::Application::runApplication();
 }
