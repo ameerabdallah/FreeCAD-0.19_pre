@@ -24,7 +24,7 @@ void CloseAllDocuments()
 * Returns mConfig - std::map<string,string>
 * Static
 */
- std::map<std::string, std::string>&Config() {
+ std::map<std::string, std::string> Config() {
 	return App::Application::Config();
 }
  //Init Application

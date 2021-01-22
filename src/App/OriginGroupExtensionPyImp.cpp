@@ -41,7 +41,7 @@ std::string OriginGroupExtensionPy::representation(void) const
 
 
 
-
+//They don't do anything, no clue why it is here
 
 PyObject *OriginGroupExtensionPy::getCustomAttributes(const char* /*attr*/) const
 {
